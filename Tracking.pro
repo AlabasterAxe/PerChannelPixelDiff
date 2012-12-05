@@ -19,6 +19,13 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
+unix:!macx:!symbian{
+LIBS += -L/usr/lib/ -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc
+INCLUDEPATH += /usr/include/opencv
+DEPENDPATH += /usr/include/opencv
+DEFINES += NOMS_WINDOWS=0
+}
+
 win32{
 LIBS += -LC:\\opencv\\build\\x86\\vc10\\lib
 Release: LIBS += -lopencv_core242 -lopencv_highgui242 -lopencv_imgproc242
